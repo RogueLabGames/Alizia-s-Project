@@ -48,4 +48,9 @@ public class PlayerController : MonoBehaviour
         }
     }
     
+    public float getSpeed()
+    {
+        return speed;
+    }
+
 }
