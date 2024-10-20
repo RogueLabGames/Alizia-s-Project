@@ -5,13 +5,15 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
 
-    [SerializeField] private float speed = 0.1f;
-    bool isAttacking;
+    [SerializeField] private float speed = 5;
+    [SerializeField] private int hp = 3;
+    private bool isAttacking;
+    private bool isAttacked = false;
 
     private Rigidbody2D rig;
     private Animator anim;
     private SpriteRenderer spriteRenderer;
-    Vector2 move;
+    private Vector2 move;
 
     // Start is called before the first frame update
     void Start()
@@ -67,16 +69,18 @@ public class PlayerController : MonoBehaviour
         
 
     }
+    private void EndAttack() { isAttacking = false; }
 
-    private void EndAttack()
-    {
-        isAttacking = false;
+    public float GetSpeed() { return speed; }
+
+    public void SetAttacked() {
+
+        //isAttacked = true;
+        //hp -= 1;
+
+        Debug.Log("P: Attacked");
     }
-}
-    
-    public float getSpeed()
-    {
-        return speed;
-    }
+
+    public bool IsAttacked() { return isAttacked; }
 
 }
