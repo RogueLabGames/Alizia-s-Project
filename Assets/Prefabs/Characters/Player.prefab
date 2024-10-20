@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6453452792475495264}
   - component: {fileID: 5780625339820644304}
   - component: {fileID: 8855275395286175807}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Attack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -104,7 +104,7 @@ GameObject:
   - component: {fileID: 2483118383866622745}
   - component: {fileID: 432746784144563752}
   - component: {fileID: 8419643534373829315}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sprite
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -213,6 +213,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  hp: 3
+  iframesDuration: 2
+  flashNumbers: 1
 --- !u!50 &432746784144563752
 Rigidbody2D:
   serializedVersion: 4
@@ -294,9 +297,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 623908328799980869}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

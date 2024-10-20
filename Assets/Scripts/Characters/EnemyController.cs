@@ -42,7 +42,7 @@ public class EnemyController : MonoBehaviour
         else if (distance <= damageRange && !playerController.IsAttacked())
         {
             Attack();
-            playerController.SetAttacked();
+            playerController.Attacked();
         }
     
 
@@ -65,7 +65,7 @@ public class EnemyController : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Debug.Log("E: Collision with: " + other.gameObject.name);
-            playerController.SetAttacked();
+            playerController.Attacked();
         }
     }
 
