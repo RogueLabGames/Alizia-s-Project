@@ -25,7 +25,6 @@ public class EnemyController : MonoBehaviour
     private PlayerController playerController;
     //private float remainingTime;
     private bool isAttacking=false;
-
     private Vector2 newPosition;
     
    private void Awake(){
@@ -70,7 +69,7 @@ public class EnemyController : MonoBehaviour
     }
     #endregion
 
-    private void OnTriggerEnter2D(Collider2D other)
+ /*   private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
@@ -78,7 +77,7 @@ public class EnemyController : MonoBehaviour
             playerController.Attacked();
         }
     }
-/*
+
     private void OnTriggerStay2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
@@ -122,6 +121,11 @@ public class EnemyController : MonoBehaviour
     void setDeath()
     {
         Debug.Log("Enemy death");
+    }
+
+    public PlayerController GetPlayerController()
+    {
+        return playerController;
     }
 
 }
