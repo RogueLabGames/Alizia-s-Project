@@ -17,7 +17,7 @@ public class GameOver : MonoBehaviour
     public void RestartButton()
     {
         Time.timeScale = 1;
-        //SceneManager.LoadScene("Fortress");
+        SceneManager.LoadScene("Fortress");
     }
 
 
