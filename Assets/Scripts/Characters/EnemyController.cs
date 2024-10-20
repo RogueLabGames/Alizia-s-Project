@@ -13,10 +13,18 @@ public class EnemyController : MonoBehaviour
 
     [SerializeField] private float damageRange;
 
+    [SerializeField] private float damage;
+
+    [SerializeField] private float health;
+
+    //[SerializeField] private float refreshTime;
+
     private Rigidbody2D rig;
     private Animator anim;
     private SpriteRenderer spriteRenderer;
     private PlayerController playerController;
+    //private float remainingTime;
+    private bool isAttacking=false;
     private Vector2 newPosition;
     
    private void Awake(){
@@ -29,9 +37,9 @@ public class EnemyController : MonoBehaviour
     private void FixedUpdate()
     {
         float distance = Vector2.Distance(transform.position, playerController.transform.position);
-        Debug.Log("E: Actualizo Distancia: " + distance);
+        //Debug.Log("E: IsAtacking: " + isAttacking);
 
-        if (distance < minDistance)
+        if (distance < minDistance && distance>damageRange )
         {
             // Usar MovePosition con Rigidbody2D
             newPosition = Vector2.MoveTowards(rig.position, playerController.transform.position, velocity * Time.fixedDeltaTime);
@@ -39,10 +47,11 @@ public class EnemyController : MonoBehaviour
             Vector2 currentVelocity = (newPosition - rig.position) / Time.fixedDeltaTime;
             rig.velocity = currentVelocity;
         }
-        else if (distance <= damageRange && !playerController.IsAttacked())
+        else if(distance < damageRange) 
         {
-            Attack();
-            playerController.Attacked();
+            anim.Play("Attacking");
+            isAttacking = true;
+            newPosition = Vector2.zero;
         }
     
 
@@ -53,14 +62,14 @@ public class EnemyController : MonoBehaviour
             anim.SetFloat("Vertical", rig.velocity.y);
             anim.Play("Run");
         }
-        else
+        else if(!isAttacking)
         {
             anim.Play("Idle");
         }
     }
     #endregion
 
-    private void OnTriggerEnter2D(Collider2D other)
+ /*   private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
@@ -69,9 +78,54 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            Debug.Log("E: Stay Colliding");
+            Attack();
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            Debug.Log("Attack finished");
+        }
+    }*/
+
     void Attack()
     {
+        Debug.Log("Atacando");
         anim.SetBool("isMoving", false);
-        Debug.Log("E: Atacando");
     }
+
+    void setAttacked()
+    {
+        health -= 1;
+
+        if(health <= 0)
+        {
+            setDeath();
+        }
+
+    }
+
+    private void EndAttack()
+    {
+        isAttacking = false;
+        Debug.Log("Ataque finalizado");
+    }
+
+    void setDeath()
+    {
+        Debug.Log("Enemy death");
+    }
+
+    public PlayerController GetPlayerController()
+    {
+        return playerController;
+    }
+
 }
