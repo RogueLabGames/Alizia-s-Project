@@ -5,8 +5,14 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
 
+    [Header("Player Stats")]
     [SerializeField] private float speed = 5;
     [SerializeField] private int hp = 3;
+
+    [Header("I-Frames")]
+    [SerializeField] private float iframesDuration;
+    [SerializeField] private int flashNumbers;
+
     private bool isAttacking;
     private bool isAttacked = false;
 
@@ -19,13 +25,14 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rig = GetComponent<Rigidbody2D>();
-        anim = GetComponentInChildren<Animator>();
-        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        anim = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Update()
     {
         rig.velocity = move * speed; //This change attribute velocity of the RigidBody2D. Moves the character
+
     }
 
     // Update is called once per frame
@@ -73,12 +80,36 @@ public class PlayerController : MonoBehaviour
 
     public float GetSpeed() { return speed; }
 
-    public void SetAttacked() {
+    public void Attacked() {
 
-        //isAttacked = true;
-        //hp -= 1;
+        if (hp > 0){
+            //isAttacked = true;
+            hp -= 1;
+            StartCoroutine(Invurnerability());
+        }
+        if (hp == 0)
+        {
+            Debug.Log("Dead");
+        }
+        
 
         Debug.Log("P: Attacked");
+    }
+
+    private IEnumerator Invurnerability()
+    {
+        Physics2D.IgnoreLayerCollision(6,3,true);
+
+        for (int i = 0; i < flashNumbers; i++)
+        {
+            spriteRenderer.color = new Color(1, 0, 0, 0.5f);
+            yield return new WaitForSeconds(1);
+            spriteRenderer.color = Color.white;
+            yield return new WaitForSeconds(1);
+        }
+
+        Physics2D.IgnoreLayerCollision(6, 3, false);
+
     }
 
     public bool IsAttacked() { return isAttacked; }
