@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float iframesDuration;
     [SerializeField] private int flashNumbers;
 
+    [SerializeField] private GameObject gameOver;
+
     private bool isAttacking;
     private bool isAttacked = false;
 
@@ -89,7 +91,9 @@ public class PlayerController : MonoBehaviour
         }
         if (hp == 0)
         {
-            Debug.Log("Dead");
+            gameOver.SetActive(true);
+            Time.timeScale = 0;
+            
         }
         
 

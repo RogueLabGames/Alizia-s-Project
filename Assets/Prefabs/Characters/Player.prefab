@@ -216,6 +216,7 @@ MonoBehaviour:
   hp: 3
   iframesDuration: 2
   flashNumbers: 1
+  gameOver: {fileID: 0}
 --- !u!50 &432746784144563752
 Rigidbody2D:
   serializedVersion: 4
