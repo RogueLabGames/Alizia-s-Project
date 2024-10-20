@@ -53,6 +53,7 @@ public class BubbleScript : MonoBehaviour
 
     private void DestroyBubble()
     {
+        animator.SetBool("Explode",false);
         Destroy(this.gameObject);
     }
 
