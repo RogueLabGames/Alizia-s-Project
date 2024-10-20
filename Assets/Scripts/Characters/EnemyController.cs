@@ -13,11 +13,19 @@ public class EnemyController : MonoBehaviour
 
     [SerializeField] private float damageRange;
 
+    [SerializeField] private float damage;
+
+    [SerializeField] private float health;
+
+    [SerializeField] private float refreshTime;
+
     private Rigidbody2D rig;
     private Animator anim;
     private SpriteRenderer spriteRenderer;
     private PlayerController playerController;
-    
+    private float remainingTime;
+
+
    private void Awake(){
     rig = GetComponent<Rigidbody2D>();
     anim = GetComponentInChildren<Animator>();
@@ -98,14 +106,14 @@ public class EnemyController : MonoBehaviour
             if (transform.position.x-followObject.transform.position.x > 0.1)
             {
                 // mirar hacia izquierda
-                Debug.Log("mira hacia izquierda "+( transform.position.x - followObject.transform.position.x));
+                //Debug.Log("mira hacia izquierda "+( transform.position.x - followObject.transform.position.x));
                 anim.SetInteger("intDirection", 2);
                 spriteRenderer.flipX = true;
             }
             else if (transform.position.x-followObject.transform.position.x < -0.1)
             {
                 //mirar derecha
-                Debug.Log("mira hacia derecha");
+                //Debug.Log("mira hacia derecha");
                 anim.SetInteger("intDirection", 2);
                 spriteRenderer.flipX= false;
 
@@ -114,7 +122,7 @@ public class EnemyController : MonoBehaviour
             {
                 spriteRenderer.flipX = false;
                 // mirar hacia abajo
-                Debug.Log("mira hacia abajo");
+                //Debug.Log("mira hacia abajo");
                 anim.SetInteger("intDirection", 0);
 
             }
@@ -124,7 +132,7 @@ public class EnemyController : MonoBehaviour
         else
         {
             //mirar hacia arriba
-            Debug.Log("mira hacia arriba");
+            //Debug.Log("mira hacia arriba");
             anim.SetInteger("intDirection", 1);
             spriteRenderer.flipX = false;
         }
@@ -139,7 +147,20 @@ public class EnemyController : MonoBehaviour
 
     void Attack()
     {
-        anim.SetBool("isMoving", false);
+
+        if(remainingTime <= 0) 
+        {
+            Debug.Log("Atacando");
+            remainingTime = refreshTime;
+            anim.SetBool("isMoving", false);
+        }
+        else
+        {
+            remainingTime -= Time.deltaTime;
+            //Debug.Log("intentando atacar "+remainingTime);
+        }
+
+
     }
 
 }
