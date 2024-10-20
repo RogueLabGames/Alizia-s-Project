@@ -26,123 +26,56 @@ public class EnemyController : MonoBehaviour
     private float remainingTime;
 
 
+    private Vector2 newPosition;
+    
    private void Awake(){
-    rig = GetComponent<Rigidbody2D>();
-    anim = GetComponentInChildren<Animator>();
-    spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-        playerController = followObject.GetComponent<PlayerController>();
+        rig = GetComponent<Rigidbody2D>();
+        anim = GetComponentInChildren<Animator>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        playerController = followObject.GetComponentInChildren<PlayerController>();
    }
-
-    /* private void FixedUpdate(){
-
-        float distance = Vector2.Distance(transform.position, followObject.transform.position);
-        
-        if (distance < minDistance && distance>damageRange) {
-            anim.SetBool("isMoving", true);
-
-            if (playerController.getSpeed() >= velocity)
-            {
-                //walk
-                anim.SetBool("isRunning", false);
-               
-            }
-            else
-            {
-                //run
-                anim.SetBool("isRunning", true);
-            }
-
-           
-            transform.position = Vector2.MoveTowards(transform.position, followObject.transform.position, velocity * Time.deltaTime);
-
-        }
-        else if (distance < minDistance && distance<damageRange)
-        {
-            //atacar
-            transform.position = new Vector2(transform.position.x, transform.position.y);
-        }
-        else
-        {
-            anim.SetBool("isMoving", false);
-            anim.SetBool("isRunning", false);
-        }*/
 
     private void FixedUpdate()
     {
-        float distance = Vector2.Distance(transform.position, followObject.transform.position);
+        float distance = Vector2.Distance(transform.position, playerController.transform.position);
+        Debug.Log("E: Actualizo Distancia: " + distance);
 
-        if (distance < minDistance && distance > damageRange)
+        if (distance < minDistance)
         {
-            anim.SetBool("isMoving", true);
-
-            if (playerController.getSpeed() >= velocity)
-            {
-                anim.SetBool("isRunning", false);
-            }
-            else
-            {
-                anim.SetBool("isRunning", true);
-            }
-
             // Usar MovePosition con Rigidbody2D
-            Vector2 newPosition = Vector2.MoveTowards(rig.position, followObject.transform.position, velocity * Time.fixedDeltaTime);
+            newPosition = Vector2.MoveTowards(rig.position, playerController.transform.position, velocity * Time.fixedDeltaTime);
             rig.MovePosition(newPosition);
+            Vector2 currentVelocity = (newPosition - rig.position) / Time.fixedDeltaTime;
+            rig.velocity = currentVelocity;
         }
-        else if (distance <= damageRange)
+        else if (distance <= damageRange && !playerController.IsAttacked())
         {
             Attack();
-        }
-        else
-        {
-            anim.SetBool("isMoving", false);
-            anim.SetBool("isRunning", false);
+            playerController.SetAttacked();
         }
     
 
         #region AnimationController
-        if (transform.position.y-followObject.transform.position.y > 0)
+        if (newPosition.magnitude != 0)
         {
-  
-            if (transform.position.x-followObject.transform.position.x > 0.1)
-            {
-                // mirar hacia izquierda
-                //Debug.Log("mira hacia izquierda "+( transform.position.x - followObject.transform.position.x));
-                anim.SetInteger("intDirection", 2);
-                spriteRenderer.flipX = true;
-            }
-            else if (transform.position.x-followObject.transform.position.x < -0.1)
-            {
-                //mirar derecha
-                //Debug.Log("mira hacia derecha");
-                anim.SetInteger("intDirection", 2);
-                spriteRenderer.flipX= false;
-
-            }
-            else
-            {
-                spriteRenderer.flipX = false;
-                // mirar hacia abajo
-                //Debug.Log("mira hacia abajo");
-                anim.SetInteger("intDirection", 0);
-
-            }
-
-
+            anim.SetFloat("Horizontal", rig.velocity.x);
+            anim.SetFloat("Vertical", rig.velocity.y);
+            anim.Play("Run");
         }
         else
         {
-            //mirar hacia arriba
-            //Debug.Log("mira hacia arriba");
-            anim.SetInteger("intDirection", 1);
-            spriteRenderer.flipX = false;
+            anim.Play("Idle");
         }
     }
     #endregion
 
-    void OnCollisionEnter(Collision colision)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Colisionó con: " + colision.gameObject.name);
-
+        if (other.CompareTag("Player"))
+        {
+            Debug.Log("E: Collision with: " + other.gameObject.name);
+            playerController.SetAttacked();
+        }
     }
 
     void Attack()
@@ -161,6 +94,7 @@ public class EnemyController : MonoBehaviour
         }
 
 
+        anim.SetBool("isMoving", false);
+        Debug.Log("E: Atacando");
     }
-
 }
