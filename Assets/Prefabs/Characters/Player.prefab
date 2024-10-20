@@ -213,7 +213,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  hp: 3
+  hp: 10
   iframesDuration: 2
   flashNumbers: 1
   gameOver: {fileID: 0}

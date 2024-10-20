@@ -14,6 +14,7 @@ public class SwordDmg : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        Debug.Log("Hit");
         if(other.CompareTag("Enemy") || other.CompareTag("ObjectFragile"))
         {
             Destroy(other.gameObject);
