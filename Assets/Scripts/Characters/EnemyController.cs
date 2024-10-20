@@ -70,16 +70,15 @@ public class EnemyController : MonoBehaviour
     }
     #endregion
 
-    /*private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
             Debug.Log("E: Collision with: " + other.gameObject.name);
-            playerController.SetAttacked();
-            Attack();
+            playerController.Attacked();
         }
     }
-
+/*
     private void OnTriggerStay2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
