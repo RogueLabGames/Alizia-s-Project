@@ -241,7 +241,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5288444507191929260, guid: 3b84fc5b6083ffb4ea116507d764b2bc, type: 3}
       propertyPath: m_NormalizedViewPortRect.y
-      value: 0
+      value: 0.0124223605
       objectReference: {fileID: 0}
     - target: {fileID: 5288444507191929260, guid: 3b84fc5b6083ffb4ea116507d764b2bc, type: 3}
       propertyPath: m_NormalizedViewPortRect.width
@@ -249,7 +249,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5288444507191929260, guid: 3b84fc5b6083ffb4ea116507d764b2bc, type: 3}
       propertyPath: m_NormalizedViewPortRect.height
-      value: 1
+      value: 0.9770963
       objectReference: {fileID: 0}
     - target: {fileID: 5597756489274930608, guid: 3b84fc5b6083ffb4ea116507d764b2bc, type: 3}
       propertyPath: m_LocalPosition.x
@@ -34715,7 +34715,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 4e118b0cf35e85b45a872177a6c9b918, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 8bec6c41d60e2994fa33c0f516e97699, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1

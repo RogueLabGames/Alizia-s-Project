@@ -10264,7 +10264,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 4e118b0cf35e85b45a872177a6c9b918, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 1c0d1c7324a1ed34095c1da79cfae1a1, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -10421,9 +10421,9 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
-    y: 0.06739526
+    y: 0.0124223605
     width: 1
-    height: 0.8668033
+    height: 0.9770963
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
