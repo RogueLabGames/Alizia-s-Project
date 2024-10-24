@@ -7,12 +7,11 @@ public class PlayerController : MonoBehaviour
 
     [Header("Player Stats")]
     [SerializeField] private float speed = 5;
-    [SerializeField] private int hp = 3;
 
     [Header("I-Frames")]
     [SerializeField] private float iframesDuration;
     [SerializeField] private int flashNumbers;
-
+    [SerializeField] private GameManager gameManager;
     [SerializeField] private GameObject gameOver;
 
     private bool isAttacking;
@@ -22,6 +21,7 @@ public class PlayerController : MonoBehaviour
     private Animator anim;
     private SpriteRenderer spriteRenderer;
     private Vector2 move;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour
         rig = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     void Update()
@@ -73,24 +74,23 @@ public class PlayerController : MonoBehaviour
         else
         {
             anim.Play("Idle");
-        }
-
-        
-
+        }       
     }
+
     private void EndAttack() { isAttacking = false; }
 
     public float GetSpeed() { return speed; }
 
     public void Attacked() {
-
-        if (hp > 0){
-            //isAttacked = true;
-            hp -= 1;
+        Debug.Log("P: Has being attacked");
+        if (gameManager.GetHealth() > 0){
+            isAttacked = true;
+            gameManager.UpdateCurrentBars(1);
             StartCoroutine(Invurnerability());
         }
-        if (hp == 0)
+        if (gameManager.GetHealth() == 0)
         {
+            Physics2D.IgnoreLayerCollision(6, 3, false);
             gameOver.SetActive(true);
             Time.timeScale = 0;
             

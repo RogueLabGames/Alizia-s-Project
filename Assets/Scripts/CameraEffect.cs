@@ -29,26 +29,26 @@ public class CameraEffect : MonoBehaviour
         if (!isMoving){
             if (player.position.y - transform.position.y >= yDistance )
             {
-                Debug.Log("Entra Arriba");
+                Debug.Log("Camera Up");
                 cameraDestination += new Vector3(0, yMovement, 0);
                 StartCoroutine(Movement());
 
             }
             else if (transform.position.y - player.position.y >= yDistance)
             {
-                Debug.Log("Entra abajo");
+                Debug.Log("Camera Down");
                 cameraDestination -= new Vector3(0, yMovement, 0);
                 StartCoroutine(Movement());
             }
             else if (player.position.x - transform.position.x >= xDistance)
             {
-                Debug.Log("Entra Derecha");
+                Debug.Log("Camera Right");
                 cameraDestination += new Vector3(xMovement, 0, 0);
                 StartCoroutine(Movement());
             }
             else if (transform.position.x - player.position.x >= xDistance)
             {
-                Debug.Log("Entra Izquierda");
+                Debug.Log("Camera Left");
                 cameraDestination -= new Vector3(xMovement, 0, 0);
                 StartCoroutine(Movement());
             }

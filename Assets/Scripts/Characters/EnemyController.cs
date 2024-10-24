@@ -114,7 +114,7 @@ public class EnemyController : MonoBehaviour
     private void EndAttack()
     {
         isAttacking = false;
-        Debug.Log("Ataque finalizado");
+        Debug.Log("Attack finished");
     }
 
     void setDeath()
