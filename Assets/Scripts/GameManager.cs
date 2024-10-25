@@ -8,13 +8,14 @@ public class GameManager : MonoBehaviour
 
     private static GameManager instance;
 
-    [SerializeField] private Image[] playerBars;
-    [SerializeField] private Sprite[] barStatus;
     [SerializeField] private int currentBars;
     [SerializeField] private int health;
 
-    static int minBars = 3;
-    static int maxBars = 3;
+
+    public static GameManager Instance
+    {
+        get { return instance; }
+    }
 
     void Awake()
     {
@@ -29,60 +30,37 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        currentBars = Mathf.Clamp(currentBars, minBars, maxBars);
-        health = Mathf.Clamp(health, 1, health * currentBars);
-        UpdateBars();
-    }
-
-    private void UpdateBars()
-    {
-        int aux = health;
-
-        for (int i = 0; i < maxBars; i++)
-        {
-            if (i < currentBars)
-            {
-                playerBars[i].enabled = true;
-                playerBars[i].sprite = GetBarStatus(aux);
-                aux -= 3;
-            }
-            else
-            {
-                playerBars[i].enabled = false;
-            }
-
-        }
-    }
-
-    private Sprite GetBarStatus(int aux)
-    {
-        switch (aux)
-        {
-            case 1: return barStatus[1];
-            case 2: return barStatus[2];
-            case >= 3 : return barStatus[3];
-            default: return barStatus[0];
-        }
-
-    }
-
-    public void UpdateCurrentBars(int n)
-    {
-        health -= 1;
-        health = Mathf.Clamp(health, 0, health * currentBars);
-        UpdateBars();
-    }
-
+    #region Health
     public int GetHealth()
     {
         return health;
     }
 
-    public void SetHealth()
+    public int GetBars()
     {
-        health = 9;
+        return currentBars;
     }
+
+    public void SetHealth(int n, string restore)
+    {
+        Debug.Log("GM: Health changes");
+        switch (n)
+        {
+            case 1:
+                if (restore == null)
+                {
+                    Debug.Log("GM: Health removed");
+                    health -= 1;
+                }
+                else
+                {
+                    Debug.Log("GM: Health restored");
+                    health += 1;
+                }
+                break;
+            case 9: Debug.Log("GM: Health completly restored"); 
+                health = 9; break;
+        }
+    }
+    #endregion
 }

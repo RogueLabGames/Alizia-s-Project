@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private int flashNumbers;
     [SerializeField] private GameManager gameManager;
     [SerializeField] private GameObject gameOver;
+    [SerializeField] private HUDController hudController;
 
     private bool isAttacking;
     private bool isAttacked = false;
@@ -85,13 +86,14 @@ public class PlayerController : MonoBehaviour
         Debug.Log("P: Has being attacked");
         if (gameManager.GetHealth() > 0){
             isAttacked = true;
-            gameManager.UpdateCurrentBars(1);
+            gameManager.SetHealth(1, null);
+            hudController.UpdateCurrentBars();
             StartCoroutine(Invurnerability());
         }
         if (gameManager.GetHealth() == 0)
         {
             Physics2D.IgnoreLayerCollision(6, 3, false);
-            gameManager.SetHealth();
+            gameManager.SetHealth(9, null);
             gameOver.SetActive(true);
             Time.timeScale = 0;
         }
