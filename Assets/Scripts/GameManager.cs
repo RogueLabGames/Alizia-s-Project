@@ -80,4 +80,9 @@ public class GameManager : MonoBehaviour
     {
         return health;
     }
+
+    public void SetHealth()
+    {
+        health = 9;
+    }
 }

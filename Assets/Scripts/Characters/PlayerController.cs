@@ -91,9 +91,9 @@ public class PlayerController : MonoBehaviour
         if (gameManager.GetHealth() == 0)
         {
             Physics2D.IgnoreLayerCollision(6, 3, false);
+            gameManager.SetHealth();
             gameOver.SetActive(true);
             Time.timeScale = 0;
-            
         }
         
 
