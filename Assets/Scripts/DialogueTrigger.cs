@@ -22,6 +22,7 @@ public class DialogueTrigger : MonoBehaviour
     [SerializeField] private float wordSpeed;
     [SerializeField] private GameObject nextButton;
     [SerializeField] private GameObject player;
+    [SerializeField] private GameManager gameManager;
 
     void Awake()
     {
@@ -29,6 +30,7 @@ public class DialogueTrigger : MonoBehaviour
         linearBackup = rig.velocity;
         rig.velocity = Vector2.zero;
         originalRig = rig.constraints;
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     public void zeroText()
@@ -36,6 +38,7 @@ public class DialogueTrigger : MonoBehaviour
         dialogueText.text = "";
         index = 0;
         dialoguePanel.SetActive(false);
+        gameManager.SetDialog(false);
     }
 
     IEnumerator Typing()
@@ -80,6 +83,7 @@ public class DialogueTrigger : MonoBehaviour
             rig.constraints = RigidbodyConstraints2D.FreezeAll;
             zeroText();
             dialoguePanel.SetActive(true);
+            gameManager.SetDialog(true);
             StartCoroutine(Typing());
 
             if(dialogueText.text == dialogue[index])

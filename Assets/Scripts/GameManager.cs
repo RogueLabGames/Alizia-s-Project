@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private int currentBars;
     [SerializeField] private int health;
+    private bool isDialog = false;
 
 
     public static GameManager Instance
@@ -63,4 +64,14 @@ public class GameManager : MonoBehaviour
         }
     }
     #endregion
+
+    public bool GetDialog
+    {
+        get { return isDialog; }
+    }
+
+    public void SetDialog(bool x)
+    {
+        isDialog = x;
+    }
 }

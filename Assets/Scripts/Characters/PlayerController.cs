@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
 
     private bool isAttacking;
     private bool isAttacked = false;
+    
 
     private Rigidbody2D rig;
     private Animator anim;
@@ -48,7 +49,7 @@ public class PlayerController : MonoBehaviour
         if (isAttacking) return;
         move = new Vector2(horizontalMove, verticalMove).normalized;
 
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0) && gameManager.GetDialog == false)
         {
             Debug.Log("Attacking");
             anim.Play("Attack");

@@ -18504,12 +18504,16 @@ PrefabInstance:
       value: Main Camera
       objectReference: {fileID: 0}
     - target: {fileID: 5288444507191929260, guid: 3b84fc5b6083ffb4ea116507d764b2bc, type: 3}
+      propertyPath: orthographic size
+      value: 5.0625
+      objectReference: {fileID: 0}
+    - target: {fileID: 5288444507191929260, guid: 3b84fc5b6083ffb4ea116507d764b2bc, type: 3}
       propertyPath: m_NormalizedViewPortRect.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5288444507191929260, guid: 3b84fc5b6083ffb4ea116507d764b2bc, type: 3}
       propertyPath: m_NormalizedViewPortRect.y
-      value: 0.0124223605
+      value: 0.0029325513
       objectReference: {fileID: 0}
     - target: {fileID: 5288444507191929260, guid: 3b84fc5b6083ffb4ea116507d764b2bc, type: 3}
       propertyPath: m_NormalizedViewPortRect.width
@@ -18517,7 +18521,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5288444507191929260, guid: 3b84fc5b6083ffb4ea116507d764b2bc, type: 3}
       propertyPath: m_NormalizedViewPortRect.height
-      value: 0.9770963
+      value: 0.99273944
       objectReference: {fileID: 0}
     - target: {fileID: 5597756489274930608, guid: 3b84fc5b6083ffb4ea116507d764b2bc, type: 3}
       propertyPath: m_LocalPosition.x
@@ -18525,7 +18529,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5597756489274930608, guid: 3b84fc5b6083ffb4ea116507d764b2bc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -2.99
       objectReference: {fileID: 0}
     - target: {fileID: 5597756489274930608, guid: 3b84fc5b6083ffb4ea116507d764b2bc, type: 3}
       propertyPath: m_LocalPosition.z
@@ -18558,6 +18562,14 @@ PrefabInstance:
     - target: {fileID: 5597756489274930608, guid: 3b84fc5b6083ffb4ea116507d764b2bc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5808246078316715150, guid: 3b84fc5b6083ffb4ea116507d764b2bc, type: 3}
+      propertyPath: m_RefResolutionX
+      value: 290
+      objectReference: {fileID: 0}
+    - target: {fileID: 5808246078316715150, guid: 3b84fc5b6083ffb4ea116507d764b2bc, type: 3}
+      propertyPath: m_RefResolutionY
+      value: 162
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
