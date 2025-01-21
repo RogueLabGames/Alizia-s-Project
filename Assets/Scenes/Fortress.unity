@@ -227,6 +227,7 @@ MonoBehaviour:
   wordSpeed: 0.06
   nextButton: {fileID: 127999134}
   player: {fileID: 300829787}
+  gameManager: {fileID: 0}
 --- !u!1001 &260142499
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -326,10 +327,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4590176598987692760, guid: 3b84fc5b6083ffb4ea116507d764b2bc, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1203838098}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b84fc5b6083ffb4ea116507d764b2bc, type: 3}
 --- !u!1 &300829787 stripped
 GameObject:
@@ -435,6 +433,7 @@ MonoBehaviour:
   wordSpeed: 0.06
   nextButton: {fileID: 1048212339}
   player: {fileID: 300829787}
+  gameManager: {fileID: 0}
 --- !u!1 &479985051
 GameObject:
   m_ObjectHideFlags: 0
@@ -22313,45 +22312,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5899902916829440388, guid: f9a161eb685ed1442b4c08e28be7372d, type: 3}
   m_PrefabInstance: {fileID: 1048212337}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1203838091 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4590176598987692760, guid: 3b84fc5b6083ffb4ea116507d764b2bc, type: 3}
-  m_PrefabInstance: {fileID: 260142499}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1203838098
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1203838091}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72ece51f2901e7445ab60da3685d6b5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ShowDebugText: 0
-  m_ShowCameraFrustum: 1
-  m_IgnoreTimeScale: 0
-  m_WorldUpOverride: {fileID: 0}
-  m_UpdateMethod: 2
-  m_BlendUpdateMethod: 1
-  m_DefaultBlend:
-    m_Style: 1
-    m_Time: 2
-    m_CustomCurve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-  m_CustomBlends: {fileID: 0}
-  m_CameraCutEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_CameraActivatedEvent:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &1349630475 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6965558732089069687, guid: e90fe9707fcf18a4dbc1f4b73fb4948d, type: 3}
